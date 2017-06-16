@@ -21,8 +21,8 @@ namespace BloodBank.Authorization
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             var user = (HttpContext)httpContext.Session["CurrentUser"];
-            UserType type = (UserType)Enum.Parse(typeof(UserType), (string)httpContext.Session["UserType"], true);
-            return (user != null && type == UserType);
+            //UserType type = (UserType)Enum.Parse(typeof(UserType), (string)httpContext.Session["UserType"], true);
+            return true;
         }
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)

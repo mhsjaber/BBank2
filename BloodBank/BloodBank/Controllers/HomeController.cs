@@ -7,7 +7,6 @@ using System.Web.Mvc;
 
 namespace BloodBank.Controllers
 {
-    [CustomAuthorizeUser(UserType = UserType.Admin)]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -20,12 +19,8 @@ namespace BloodBank.Controllers
             return View();
         }
 
-        [AllowAnonymous]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-            HttpContext.Session["UserType"] = UserType.Admin.ToString();
-            string x = (string)HttpContext.Session["UserType"];
             return View();
         }
     }
