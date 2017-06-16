@@ -1,4 +1,6 @@
-﻿@{
+﻿@model BloodBank.Models.EntityDiagram.ContactMessage
+
+@{
     ViewBag.Title = "Contact";
 }
 <div class="content">
@@ -12,7 +14,7 @@
                 </ol>
             </div>
             <div class="contact_head">
-                <p>
+                <p> @BloodBank.Models.EntityDiagram.AccountStatus.Active
                     Lorem ipsum dolor sit amet, adipiscing elit. Donec tincidunt dolor et tristique bibendum. Aenean sollicitudin vitae dolor ut posuere.
                     It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the recently with desktop publishing software.
                 </p>
@@ -20,12 +22,12 @@
             <div class="contact-grids">
                 <div class="col-md-6 contact_left">
                     <h3>Contact Form</h3>
-                    <form>
+                    <form method="post" action="/Home/Contact">
                         <div class="form_details">
-                            <input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
-                            <input type="text" class="text" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}">
-                            <input type="text" class="text" value="Subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}">
-                            <textarea value="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
+                            <input type="text" class="text" name="FullName" placeholder="Name">
+                            <input type="text" class="text" name="Email" placeholder="Email Address">
+                            <input type="text" class="text" name="Subject" placeholder="Subject">
+                            <textarea placeholder="Message" name="Message"></textarea>
                             <div class="clearfix"> </div>
                             <input name="submit" type="submit" value="Send message">
                         </div>

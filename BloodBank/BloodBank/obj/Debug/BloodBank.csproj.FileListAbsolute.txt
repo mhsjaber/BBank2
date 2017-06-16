@@ -51,3 +51,7 @@ C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\Newtonsoft.Json.xml
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\obj\Debug\BloodBank.csprojResolveAssemblyReference.cache
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\obj\Debug\BloodBank.dll
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\obj\Debug\BloodBank.pdb
+C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\EntityFramework.dll
+C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\EntityFramework.SqlServer.dll
+C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\EntityFramework.xml
+C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\EntityFramework.SqlServer.xml
