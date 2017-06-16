@@ -7,7 +7,8 @@ namespace BloodBank.Models.EntityDiagram
 {
     public enum AccountStatus
     {
-        Active =1,
+        Pending = 1,
+        Active,
         Blocked
     }
 }

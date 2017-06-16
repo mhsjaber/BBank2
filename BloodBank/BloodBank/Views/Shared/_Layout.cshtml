@@ -48,10 +48,10 @@
                     <span class="menu"></span>
                     <ul>
                         <li id="home"><a href="/Home">Home</a></li>
-                        <li><a href="/Home/About">About</a></li>
-                        <li><a href="/Home">Mission</a></li>
+                        <li id="donor"><a href="/Donor">Donors</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="blog.html">Blog</a></li>
+                        <li><a href="/Home/About">About</a></li>
                         <li><a href="/Home/Contact">Contact</a></li>
                     </ul>
                     <div class="clearfix"> </div>
@@ -115,14 +115,17 @@
                 var href = window.location.href;
                 if (href[href.length - 1] == '/')
                     href = href.slice(0, -1);
-                
+
                 var loc = window.location;
                 var baseUrl = loc.protocol + "//" + loc.hostname + (loc.port ? ":" + loc.port : "");
-                
-                if (href == baseUrl)
+
+                if (href.toLowerCase() == baseUrl.toLowerCase() || href.toLowerCase() == baseUrl + "/home/index")
                     $('#home').addClass('active');
 
-                if (this.href == href) 
+                if (href.toLowerCase() == baseUrl + "/donor" || href.toLowerCase() == baseUrl + "/donor/index")
+                    $('#donor').addClass('active');
+
+                if (this.href == href)
                     $(this).closest('li').addClass("active");
             });
     </script>

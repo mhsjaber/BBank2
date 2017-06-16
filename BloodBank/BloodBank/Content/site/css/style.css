@@ -656,10 +656,10 @@ h3.team {
 .btn {
 	border: none;
 	font-family: inherit;
-	font-size: inherit;
+	font-size: 14px;
 	color: inherit;
 	background: none;
-	padding: 0.4em 1.5em;
+	padding: 4px 15px;
 	display: inline-block;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -670,7 +670,6 @@ h3.team {
 	transition: all 0.3s;
 	border-radius:0px !important;
 	text-decoration: none;
-	font-size: 1.5em;
 	border: 2px solid #404642;
 	font-weight: 600;
 	color: #d80112;

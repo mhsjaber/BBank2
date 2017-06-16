@@ -17,7 +17,10 @@
                 </div>
                 <div class="col-md-7 about-top-right">
                     <h4>Our Mission</h4>
-                    <p>@Model.Mission</p>
+                    @foreach (var item in Model.Mission.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        <p>@item</p>
+                    }
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -26,7 +29,10 @@
     <div class="who_are">
         <div class="container">
             <h4>Our Vission</h4>
-            <p>@Model.Vision</p>
+            @foreach (var item in Model.Vision.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                <p>@item</p>
+            }
         </div>
     </div>
 </div>

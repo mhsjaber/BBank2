@@ -10,7 +10,7 @@ namespace BloodBank.Controllers
 {
     public class HomeController : Controller
     {
-        public DonorDBContext context = new DonorDBContext();
+        private DonorDBContext context = new DonorDBContext();
         public ActionResult Index()
         {
             return View();

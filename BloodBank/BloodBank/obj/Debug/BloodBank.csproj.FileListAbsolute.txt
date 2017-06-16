@@ -15,6 +15,8 @@ C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\BloodBank.dll.config
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\BloodBank.dll
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\BloodBank.pdb
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\Antlr3.Runtime.dll
+C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\EntityFramework.dll
+C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\EntityFramework.SqlServer.dll
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -33,6 +35,8 @@ C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\System.Web.WebPages.Deploy
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\System.Web.WebPages.dll
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\System.Web.WebPages.Razor.dll
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\WebGrease.dll
+C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\EntityFramework.xml
+C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\EntityFramework.SqlServer.xml
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\Microsoft.AI.Web.xml
@@ -48,10 +52,5 @@ C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\System.Web.WebPages.Deploy
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\System.Web.WebPages.Razor.xml
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\Antlr3.Runtime.pdb
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\Newtonsoft.Json.xml
-C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\obj\Debug\BloodBank.csprojResolveAssemblyReference.cache
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\obj\Debug\BloodBank.dll
 C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\obj\Debug\BloodBank.pdb
-C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\EntityFramework.dll
-C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\EntityFramework.SqlServer.dll
-C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\EntityFramework.xml
-C:\Users\Jaber\Desktop\BBank2\BloodBank\BloodBank\bin\EntityFramework.SqlServer.xml

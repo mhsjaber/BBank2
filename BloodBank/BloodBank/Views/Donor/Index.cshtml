@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BloodBank.Models.EntityDiagram.Donor>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="content">
+    <div class="container">
+        <div class="contact">
+            <div class="contact-header">
+                <h3>Donors</h3>
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Donors</li>
+                </ol>
+            </div>
+            <div class="contact_head">
+                <div class="row">
+                    <form action="/Donor" method="get">
+                        <div class="col-sm-3 col-xs-6">
+                            <select class="form-control" name="bloodGroup">
+                                <option value="">All</option>
+                                <option>A+</option>
+                                <option>B+</option>
+                                <option>AB+</option>
+                                <option>O+</option>
+                                <option>A-</option>
+                                <option>B-</option>
+                                <option>AB-</option>
+                                <option>O-</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <input class="form-control" name="area" />
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <input class="form-control" name="district" />
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <input type="submit" class="btn btn-xs" value="Search" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @foreach (var item in Model)
+            {
+                <span>@item.FullName</span>
+            }
+        </div>
+    </div>
+</div>
