@@ -136,7 +136,7 @@
                 if (href.toLowerCase() == baseUrl.toLowerCase() || href.toLowerCase() == baseUrl + "/home/index")
                     $('#home').addClass('active');
 
-                if (href.toLowerCase() == baseUrl + "/donors" || href.toLowerCase() == baseUrl + "/Donors/index")
+                if (href.toLowerCase() == baseUrl + "/donors" || href.toLocaleLowerCase().startsWith(baseUrl + '/donors/index?') || href.toLocaleLowerCase().startsWith(baseUrl + '/donors?'))
                     $('#donor').addClass('active');
                 
                 if (href.toLocaleLowerCase().startsWith(baseUrl + '/home/event'))

@@ -19,14 +19,16 @@ namespace BloodBank.Controllers
         {
             var model = context.Donor
                 .ToList()
-                .Where(x => x.BloodGroup.ToLower().Contains(bloodGroup.ToLower()) &&
-                    x.Area.ToLower().Contains(area.ToLower()) &&
+                .Where(x => x.Area.ToLower().Contains(area.ToLower()) &&
                     x.District.ToLower().Contains(district.ToLower()) &&
                     x.Status == AccountStatus.Active)
                 .ToList()
-                .OrderBy(x => x.District)
+                .OrderBy(x => x.BloodGroup)
                 .ThenBy(x => x.Area)
                 .ToList();
+
+            if (!string.IsNullOrWhiteSpace(bloodGroup))
+                model = model.Where(x => x.BloodGroup.ToLower() == bloodGroup.ToLower()).ToList();
             return View(model);
         }
 
