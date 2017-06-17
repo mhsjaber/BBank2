@@ -29,14 +29,25 @@
                         <p>GET FREE CONSULTATION:</p>
                         <span>1 800 123 1234</span>
                     </div>
-                    <div class="top-header-contact-account">
-                        <div class="social">
+                    <div class="top-header-contact-account" style="width: 40%">
+                        <div class="social" style="margin-top:0px">
                             <ul>
                                 <li><a href="#"><i class="facebook"></i></a></li>
                                 <li><a href="#"><i class="twitter"></i></a></li>
                                 <li><a href="#"><i class="dribble"></i></a></li>
                                 <li><a href="#"><i class="google"></i></a></li>
                             </ul>
+
+                            @if (HttpContext.Current.Session["UserType"] != null && HttpContext.Current.Session["UserType"].ToString() == "Donor")
+                            {
+                                <a href="/Donors/ProfileView" style="margin-left: 15px;color: black;text-decoration: underline;font-weight: 600;">@HttpContext.Current.Session["Username"]</a>
+                                <a href="/Donors/Logout" style="margin-left: 15px;color: black;text-decoration: underline;font-weight: 600;">Logout</a>
+                            }
+                            else
+                            {
+                                <a href="/Donors/Login" style="margin-left: 15px;color: black;text-decoration: underline;font-weight: 600;">Login</a>
+                                <a href="/Donors/Register" style="margin-left: 15px;color: black;text-decoration: underline;font-weight: 600;">Register</a>
+                            }
                         </div>
                     </div>
                     <div class="clearfix"> </div>
@@ -52,18 +63,9 @@
                     <ul>
                         <li id="home"><a href="/Home">Home</a></li>
                         <li id="donor"><a href="/Donors">Donors</a></li>
+                        <li><a href="/Home/Events">Events</a></li>
                         <li><a href="/Home/About">About</a></li>
                         <li><a href="/Home/Contact">Contact</a></li>
-                        @if (HttpContext.Current.Session["UserType"] != null && HttpContext.Current.Session["UserType"].ToString() == "Donor")
-                        {
-                            <li><a href="/Donors/ProfileView">User</a></li>
-                            <li><a href="/Donors/Logout">Logout</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="/Donors/Login">Login</a></li>
-                            <li><a href="/Donors/Register">Register</a></li>
-                        }
                     </ul>
                     <div class="clearfix"> </div>
                 </div>
@@ -142,7 +144,7 @@
             });
 
             $(function () {
-                $(".datepicker").datepicker();
+                $(".datepicker").datepicker({dateFormat: 'M dd, yy'});
             });
     </script>
     @RenderSection("scripts", required: false)

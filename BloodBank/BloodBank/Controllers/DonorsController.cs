@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BloodBank.Models.EntityDiagram;
 using BloodBank.Models;
 using BloodBank.Authorization;
+using System.Data.Entity.Validation;
 
 namespace BloodBank.Controllers
 {
@@ -38,7 +39,9 @@ namespace BloodBank.Controllers
         [AllowAnonymous, HttpPost]
         public ActionResult Register(Donor model)
         {
-            if (ModelState.IsValid && model.Password == model.RePassword)
+            if (model.FullName != null && model.Mobile != null && model.Address != null && model.Area != null &&
+                model.District != null && model.Email != null && model.Password != null && model.Username != null && 
+                model.DateOfBirth != null && model.BloodGroup != null && model.DontationStatus != 0)
             {
                 model.Status = AccountStatus.Pending;
                 model.CreatedOn = DateTime.Now;
@@ -90,25 +93,28 @@ namespace BloodBank.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProfileView([Bind(Include = "FullName,Mobile,Address,Area,District,Email,Username,DateOfBirth,BloodGroup")] Donor donor)
+        public ActionResult ProfileView(Donor model)
         {
-            if (ModelState.IsValid)
+            if (model.FullName != null && model.Mobile != null && model.Address != null && model.Area != null &&
+                model.District != null && model.Email != null &&  model.DateOfBirth != null && 
+                model.BloodGroup != null && model.DontationStatus != 0)
             {
                 var user = context.Donor.ToList().Where(x=> x.ID == Guid.Parse(HttpContext.Session["UserID"].ToString())).FirstOrDefault();
-                user.Address = donor.Address;
-                user.Area = donor.Area;
-                user.BloodGroup = donor.BloodGroup;
-                user.DateOfBirth = donor.DateOfBirth;
-                user.District = donor.District;
-                user.Email = donor.Email;
-                user.FullName = donor.FullName;
-                user.Mobile = donor.Mobile;
+                user.Address = model.Address;
+                user.Area = model.Area;
+                user.BloodGroup = model.BloodGroup;
+                user.DateOfBirth = model.DateOfBirth;
+                user.District = model.District;
+                user.Email = model.Email;
+                user.FullName = model.FullName;
+                user.Mobile = model.Mobile;
+                user.DontationStatus = model.DontationStatus;
 
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
                 return RedirectToAction("ProfileView");
             }
-            return View(donor);
+           return View(model);
         }
 
         public ActionResult Logout()
