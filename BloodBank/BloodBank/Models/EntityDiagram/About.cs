@@ -10,5 +10,6 @@ namespace BloodBank.Models.EntityDiagram
         public Guid ID { get; set; }
         public string Mission { get; set; }
         public string Vision { get; set; }
+        public string CharitableWorks { get; set; }
     }
 }

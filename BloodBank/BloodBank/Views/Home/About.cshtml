@@ -35,4 +35,13 @@
             }
         </div>
     </div>
+    <div class="who_are">
+        <div class="container">
+            <h4>Our Charitable Works</h4>
+            @foreach (var item in Model.CharitableWorks.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                <p>@item</p>
+            }
+        </div>
+    </div>
 </div>

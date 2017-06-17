@@ -1,56 +1,171 @@
-﻿@{
+﻿@model BloodBank.Models.HomeModel
+
+@{
     ViewBag.Title = "Home Page";
 }
-
+<style>
+    .project_grids h3 {
+        margin-bottom:18px
+    }
+    .featured {
+        margin: 2em 0;
+    }
+    b {
+        font-weight: bold;
+    }
+    .chrty p {
+        line-height: 23px;
+        max-height: 92px;
+        overflow: hidden;
+    }
+</style>
+<div class="container">
+    <!---End-header--->
+    <!--start-image-slider---->
+    <div class="image-slider">
+        <!-- Slideshow 1 -->
+        <ul class="rslides" id="slider1">
+            <li><img src="~/Content/Images/02.jpg" /></li>
+        </ul>
+        <!-- Slideshow 2 -->
+    </div>
+    <!--End-image-slider---->
+</div>
+<!---start-content----->
 <div class="content">
     <div class="container">
-        <div class="contact">
-            <div class="contact-header">
-                <h3>Contact</h3>
-                <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">Contact</li>
-                </ol>
+        <div class="content-grids">
+            <h2>Establishment and management of charitable trusts, foundations or endowment funds</h2>
+            <div class="col-md-4 contnt-grids">
+                <img src="/Content/site/images/w2.jpg" class="img-responsive" alt="" />
+                <div class="caption2">
+                    <h3><a href="#">Seasonal Campaigns</a></h3>
+                </div>
             </div>
-            <div class="contact_head">
-                <p>
-                    Lorem ipsum dolor sit amet, adipiscing elit. Donec tincidunt dolor et tristique bibendum. Aenean sollicitudin vitae dolor ut posuere.
-                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the recently with desktop publishing software.
-                </p>
+            <div class="col-md-4 contnt-grids cntr">
+                <img src="/Content/site/images/w1.jpg" class="img-responsive" alt="" />
+                <div class="caption2">
+                    <h3><a href="#">Blood Storage</a></h3>
+                </div>
             </div>
-            <div class="contact-grids">
-                <div class="col-md-6 contact_left">
-                    <h3>Contact Form</h3>
-                    <form>
-                        <div class="form_details">
-                            <input type="text" class="text" placeholder="Name">
-                            <input type="text" class="text" placeholder="Email Address" >
-                            <input type="text" class="text" placeholder="Subject">
-                            <textarea value="Message"></textarea>
-                            <div class="clearfix"> </div>
-                            <input name="submit" type="submit" value="Send message">
+            <div class="col-md-4 contnt-grids">
+                <img src="/Content/site/images/w3.jpg" class="img-responsive" alt="" />
+                <div class="caption2">
+                    <h3><a href="#">Media & News</a></h3>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!---start-content//----->
+<div class="recent">
+    <div class="container">
+        <div class="recent-head">
+            <h3>Who We Are?</h3>
+            <p>
+                Donec tempus justo quis justo lobortis pulvinar. Proin non ex ac ante rutrum elementum quis quis urna. Nulla facilisi.
+                Suspendisse risus lorem, bibendum id augue et, viverra vulputate odio. Vestibulum ut dolor aliquet.
+            </p>
+        </div>
+        <div class="charitys">
+            <div class="col-md-4 chrt_grid">
+                <div class="chrty">
+                    <h3>Our Mission</h3>
+                    <p>@Model.About.Mission</p>
+                </div>
+            </div>
+            <div class="col-md-4 chrt_grid middle">
+                <div class="chrty">
+                    <h3>Our Vision</h3>
+                    <p>@Model.About.Vision</p>
+                </div>
+            </div>
+            <div class="col-md-4 chrt_grid">
+                <div class="chrty">
+                    <h3>Our Charitable Works</h3>
+                    <p>@Model.About.CharitableWorks</p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="col-lg-12"><a class="btn pull-right" href="/Home/About">View Details</a></div>
+    </div>
+</div>
+<!---->
+<div class="join">
+    <div class="container">
+        <div class="col-md-9 join-info">
+            <h3>We Do A Let To Make All The People Of The World Happy</h3>
+            <p>Donec tempus justo quis justo lobortis pulvinar. Proin non ex ac ante rutrum elementum quis quis urna. Nulla facilisi.</p>
+        </div>
+        <div class="col-md-3 join-link">
+            <a href="/Donors/Register">Join Us</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!---->
+<div class="featured">
+    <div class="container">
+        <div class="project_grids">
+            <div class="row">
+                <div class="project2 fetur">
+                    <h3 class="col-lg-12">RECENTLY JOINED DONORS</h3>
+                    @foreach (var item in Model.Donors)
+                    {
+                        <div class="col-sm-4">
+                            <div class="chrty">
+                                <h5>@item.FullName &nbsp;<small style="font-style: italic; font-size: 85%">(@item.DontationStatus)</small></h5>
+                                <p style="margin-bottom:0; line-height: 1.8; margin-top: 5px;">
+                                    <b>Blood Group:</b> @item.BloodGroup
+                                    <br />
+                                    @item.Area, @item.District
+                                </p>
+                            </div>
                         </div>
-                    </form>
+                    }
                 </div>
-                <div class="col-md-6 contact_right">
-                    <h3>Address</h3>
-                    <div class="address">
-                        <ul>
-                            <li>500 Lorem Ipsum Dolor Sit,</li>
-                            <li>22-56-2-9 Sit Amet, Lorem,</li>
-                            <li>USA</li>
-                            <li>Phone:(11) 222 666 444</li>
-                            <li>Fax: (1212) 123 45 678</li>
-                            <li>Email:   <a href="mailto:info@example.com">info(at)example.com</a></li>
-                            <li>Follow on:  <a href="#">Facebook</a><a href="#">Twitter</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
             </div>
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1578265.0941403757!2d-98.9828708842255!3d39.41170802696131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1407515822047"> </iframe>
+            <div class="clearfix"></div>
+            <br />
+            <div class="row">
+                <div class="col-lg-12">
+                    <a class="btn pull-right" href="/Donors">View Donor List</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<div class="featured">
+    <div class="container">
+        <div class="project_grids">
+            <div class="row">
+                <div class="project2 fetur">
+                    <h3 class="col-lg-12">UPCOMING EVENTS</h3>
+                    @foreach (var item in Model.Events)
+                    {
+                        <div class="col-sm-4">
+                            <div class="chrty">
+                                <h5>@item.Title</h5>
+                                <p style="margin-bottom:0; line-height: 1.8; margin-top: 5px;">
+                                    <span class="glyphicon glyphicon-map-marker"></span> @item.Location;
+                                    <span class="glyphicon glyphicon-time"></span> @item.EventDate.ToString("MMM dd, yyyy")
+                                </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br />
+            <div class="row">
+                <div class="col-lg-12">
+                    <a class="btn pull-right" href="/Home/Events">View Event List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->

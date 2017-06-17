@@ -1,4 +1,5 @@
 ﻿using BloodBank.Authorization;
+using BloodBank.Models;
 using BloodBank.Models.EntityDiagram;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,11 @@ namespace BloodBank.Controllers
         private DonorDBContext context = new DonorDBContext();
         public ActionResult Index()
         {
-            return View();
+            var model = new HomeModel();
+            model.About = context.About.ToList().FirstOrDefault();
+            model.Events = context.Event.ToList().Where(x => x.EventDate >= DateTime.Now).OrderBy(x => x.EventDate).ToList().Take(3).ToList();
+            model.Donors = context.Donor.ToList().Where(x => x.Status == AccountStatus.Active).OrderBy(x => x.CreatedOn).ToList().Take(3).ToList();
+            return View(model);
         }
 
         public ActionResult About()

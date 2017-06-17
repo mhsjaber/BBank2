@@ -170,12 +170,14 @@
     <Compile Include="Models\EntityDiagram\DonorDBContext.cs" />
     <Compile Include="Models\EntityDiagram\Donors.cs" />
     <Compile Include="Models\EntityDiagram\Event.cs" />
+    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\02.jpg" />
     <Content Include="Content\site\css\bootstrap.css" />
     <Content Include="Content\site\css\responsiveslides.css" />
     <Content Include="Content\site\css\style.css" />
