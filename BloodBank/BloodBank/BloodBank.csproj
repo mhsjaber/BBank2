@@ -160,6 +160,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Authorization\CustomAuthorizeUser.cs" />
     <Compile Include="Controllers\DonorController.cs" />
+    <Compile Include="Controllers\DonorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -169,6 +170,7 @@
     <Compile Include="Models\EntityDiagram\ContactMessage.cs" />
     <Compile Include="Models\EntityDiagram\DonorDBContext.cs" />
     <Compile Include="Models\EntityDiagram\Donors.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -259,7 +261,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Donor\Index.cshtml" />
+    <Content Include="Views\Donors\Index.cshtml" />
+    <Content Include="Views\Donors\Edit.cshtml" />
+    <Content Include="Views\Donors\Login.cshtml" />
+    <Content Include="Views\Donors\ProfileView.cshtml" />
+    <Content Include="Views\Donors\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

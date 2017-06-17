@@ -4,6 +4,9 @@
     <title>Welfare A Charity Category Flat bootstrap Responsive  Website Template| Contact :: w3layouts</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <link href="/Content/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/Content/site/css/responsiveslides.css">
@@ -48,11 +51,19 @@
                     <span class="menu"></span>
                     <ul>
                         <li id="home"><a href="/Home">Home</a></li>
-                        <li id="donor"><a href="/Donor">Donors</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                        <li id="donor"><a href="/Donors">Donors</a></li>
                         <li><a href="/Home/About">About</a></li>
                         <li><a href="/Home/Contact">Contact</a></li>
+                        @if (HttpContext.Current.Session["UserType"] != null && HttpContext.Current.Session["UserType"].ToString() == "Donor")
+                        {
+                            <li><a href="/Donors/ProfileView">User</a></li>
+                            <li><a href="/Donors/Logout">Logout</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/Donors/Login">Login</a></li>
+                            <li><a href="/Donors/Register">Register</a></li>
+                        }
                     </ul>
                     <div class="clearfix"> </div>
                 </div>
@@ -105,6 +116,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
             $("span.menu").click(function () {
                 $(".top-nav ul").slideToggle("slow", function () {
@@ -122,11 +134,15 @@
                 if (href.toLowerCase() == baseUrl.toLowerCase() || href.toLowerCase() == baseUrl + "/home/index")
                     $('#home').addClass('active');
 
-                if (href.toLowerCase() == baseUrl + "/donor" || href.toLowerCase() == baseUrl + "/donor/index")
+                if (href.toLowerCase() == baseUrl + "/donors" || href.toLowerCase() == baseUrl + "/Donors/index")
                     $('#donor').addClass('active');
 
                 if (this.href == href)
                     $(this).closest('li').addClass("active");
+            });
+
+            $(function () {
+                $(".datepicker").datepicker();
             });
     </script>
     @RenderSection("scripts", required: false)

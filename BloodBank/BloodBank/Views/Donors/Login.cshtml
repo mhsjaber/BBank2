@@ -1,0 +1,31 @@
+﻿@model BloodBank.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+<div class="content">
+    <div class="container">
+        <div class="contact">
+            <div class="contact-header">
+                <h3>Donor Login</h3>
+                <ol class="breadcrumb">
+                    <li><a href="/Donors">Donor</a></li> 
+                    <li class="active">Login</li>
+                </ol>
+            </div>
+            <div class="contact-grids">
+                <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 contact_left">
+                    <h3>Login Form</h3>
+                    <form method="post" action="/Donors/Login">
+                        <div class="form_details">
+                            <input type="text" class="text" value="@Model.Username" name="Username" placeholder="Enter Username" required>
+                            <input type="password" class="text" value="@Model.Password" name="Password" placeholder="Enter Password" required>
+                            <div class="clearfix"> </div>
+                            <input name="submit" type="submit" value="Login">
+                        </div>
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>

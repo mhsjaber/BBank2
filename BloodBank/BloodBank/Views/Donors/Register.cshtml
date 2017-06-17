@@ -1,0 +1,50 @@
+﻿@model BloodBank.Models.EntityDiagram.Donor
+@{
+    ViewBag.Title = "Register";
+}
+<div class="content">
+    <div class="container">
+        <div class="contact">
+            <div class="contact-header">
+                <h3>Donor Registration</h3>
+                <ol class="breadcrumb">
+                    <li><a href="/Donor">Donor</a></li>
+                    <li class="active">Registration</li>
+                </ol>
+            </div>
+            <div class="contact-grids">
+                <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 contact_left">
+                    <h3>Registration Form</h3>
+                    <form method="post" action="/Donors/Register">
+                        <div class="form_details">
+                            <input type="text" class="text" value="@Model.FullName" name="FullName" placeholder="Enter Full Name" required>
+                            <input type="text" class="text" value="@Model.Username" name="Username" placeholder="Enter Username" required>
+                            <input type="text" class="text" value="@Model.Mobile" name="Mobile" placeholder="Enter Mobile Number">
+                            <input type="text" class="text datepicker" value="@(Model.DateOfBirth != null? Model.DateOfBirth.Value.ToString("dd/MMM/yyyy"): "")" name="DateOfBirth" placeholder="Enter Date of Birth">
+                            <input type="text" class="text" value="@Model.Email" name="Email" placeholder="Enter Email Address">
+                            <input type="password" class="text" value="@Model.Password" name="Password" placeholder="Type Password" required>
+                            <input type="password" class="text" value="@Model.RePassword" name="RePassword" placeholder="Retype Password" required>
+                            <select class="text" name="BloodGroup" required>
+                                <option value="">Select Blood Group</option>
+                                <option>A+</option>
+                                <option>B+</option>
+                                <option>AB+</option>
+                                <option>O+</option>
+                                <option>A-</option>
+                                <option>B-</option>
+                                <option>AB-</option>
+                                <option>O-</option>
+                            </select>
+                            <input type="text" class="text" value="@Model.Address" name="Address" placeholder="Enter Address" required>
+                            <input type="text" class="text" value="@Model.Area" name="Area" placeholder="Enter Area" required>
+                            <input type="text" class="text" value="@Model.District" name="District" placeholder="Enter District" required>
+                            <div class="clearfix"> </div>
+                            <input name="submit" type="submit" value="Register">
+                        </div>
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -21,8 +21,14 @@ namespace BloodBank.Authorization
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             var user = (HttpContext)httpContext.Session["CurrentUser"];
-            //UserType type = (UserType)Enum.Parse(typeof(UserType), (string)httpContext.Session["UserType"], true);
-            return true;
+            var typeString = httpContext.Session["UserType"];
+            if (typeString != null)
+            {
+                UserType type = (UserType)Enum.Parse(typeof(UserType), typeString.ToString(), true);
+                if (type == UserType.Donor)
+                    return true;
+            }
+            return false;
         }
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
@@ -30,9 +36,9 @@ namespace BloodBank.Authorization
             base.HandleUnauthorizedRequest(filterContext);
 
             if(UserType == UserType.Admin)
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index", area = "Admin" }));
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Admin", action = "Login", area = "" }));
             else
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index", area = "" }));
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Donors", action = "Login", area = "" }));
         }
     }
 }

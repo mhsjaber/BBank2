@@ -1014,7 +1014,7 @@ a.btn1 {
   font-size: 1.5em;
   margin-bottom: 0.5em;
 }
-.form_details input[type="text"], .form_details textarea {
+.form_details input[type="text"], .form_details input, .form_details select, .form_details textarea {
   padding: 10px;
   width: 100%;
   font-size: 1em;
