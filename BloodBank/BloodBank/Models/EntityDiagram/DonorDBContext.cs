@@ -11,6 +11,7 @@ namespace BloodBank.Models.EntityDiagram
     {
         public DbSet<Donor> Donor { get; set; }
         public DbSet<ContactMessage> ContactMessage { get; set; }
+        public DbSet<About> About { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

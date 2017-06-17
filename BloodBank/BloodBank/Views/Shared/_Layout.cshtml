@@ -47,7 +47,7 @@
                 <div class="top-nav">
                     <span class="menu"></span>
                     <ul>
-                        <li><a href="/Home">Home</a></li>
+                        <li id="home"><a href="/Home">Home</a></li>
                         <li><a href="/Home/About">About</a></li>
                         <li><a href="/Home">Mission</a></li>
                         <li><a href="services.html">Services</a></li>
@@ -97,7 +97,7 @@
             </div>
             <div class="col-md-3 ftr-logo">
                 <a href="index.html"><img src="/Content/site/images/frt-lg.png" alt="" /></a>
-                <p>&copy; 2015 All Rights Reseverd Design by <a href="http://w3layouts.com/">W3layouts</a> </p>
+                <p>&copy; @DateTime.Now.Year All Rights Reseverd Design by <a href="http://w3layouts.com/">W3layouts</a> </p>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -109,6 +109,21 @@
             $("span.menu").click(function () {
                 $(".top-nav ul").slideToggle("slow", function () {
                 });
+            });
+
+            $(".top-nav a").each(function () {
+                var href = window.location.href;
+                if (href[href.length - 1] == '/')
+                    href = href.slice(0, -1);
+                
+                var loc = window.location;
+                var baseUrl = loc.protocol + "//" + loc.hostname + (loc.port ? ":" + loc.port : "");
+                
+                if (href == baseUrl)
+                    $('#home').addClass('active');
+
+                if (this.href == href) 
+                    $(this).closest('li').addClass("active");
             });
     </script>
     @RenderSection("scripts", required: false)

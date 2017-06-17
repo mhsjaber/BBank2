@@ -163,6 +163,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EntityDiagram\About.cs" />
     <Compile Include="Models\EntityDiagram\AccountStatus.cs" />
     <Compile Include="Models\EntityDiagram\ContactMessage.cs" />
     <Compile Include="Models\EntityDiagram\DonorDBContext.cs" />

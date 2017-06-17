@@ -9,7 +9,7 @@
             <div class="contact-header">
                 <h3>Contact</h3>
                 <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/Home">Home</a></li>
                     <li class="active">Contact</li>
                 </ol>
             </div>
@@ -24,10 +24,10 @@
                     <h3>Contact Form</h3>
                     <form method="post" action="/Home/Contact">
                         <div class="form_details">
-                            <input type="text" class="text" name="FullName" placeholder="Name">
-                            <input type="text" class="text" name="Email" placeholder="Email Address">
-                            <input type="text" class="text" name="Subject" placeholder="Subject">
-                            <textarea placeholder="Message" name="Message"></textarea>
+                            <input type="text" class="text" value="@Model.FullName" name="FullName" placeholder="Name">
+                            <input type="text" class="text" value="@Model.Email" name="Email" placeholder="Email Address">
+                            <input type="text" class="text" value="@Model.Subject" name="Subject" placeholder="Subject">
+                            <textarea placeholder="Message" name="Message">@Model.Message</textarea>
                             <div class="clearfix"> </div>
                             <input name="submit" type="submit" value="Send message">
                         </div>

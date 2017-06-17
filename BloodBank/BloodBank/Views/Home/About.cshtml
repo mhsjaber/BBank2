@@ -1,7 +1,32 @@
-﻿@{
+﻿@model BloodBank.Models.EntityDiagram.About
+
+@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<p>Use this area to provide additional information.</p>
+<div class="about">
+    <div class="container">
+        <div class="about-main">
+            <h3>About Us</h3>
+            <ol class="breadcrumb">
+                <li><a href="/Home">Home</a></li>
+                <li class="active">About Us</li>
+            </ol>
+            <div class="about-top">
+                <div class="col-md-5 about-top-left">
+                    <img src="/Content/site/images/a1.jpg" class="img-responsive" alt="" />
+                </div>
+                <div class="col-md-7 about-top-right">
+                    <h4>Our Mission</h4>
+                    <p>@Model.Mission</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="who_are">
+        <div class="container">
+            <h4>Our Vission</h4>
+            <p>@Model.Vision</p>
+        </div>
+    </div>
+</div>

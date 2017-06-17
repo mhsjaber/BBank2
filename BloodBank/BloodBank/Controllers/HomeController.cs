@@ -18,7 +18,8 @@ namespace BloodBank.Controllers
 
         public ActionResult About()
         {
-            return View();
+            var model = context.About.ToList().FirstOrDefault();
+            return View(model);
         }
 
         public ActionResult Contact()
