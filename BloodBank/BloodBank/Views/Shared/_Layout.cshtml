@@ -63,7 +63,7 @@
                     <ul>
                         <li id="home"><a href="/Home">Home</a></li>
                         <li id="donor"><a href="/Donors">Donors</a></li>
-                        <li><a href="/Home/Events">Events</a></li>
+                        <li id="event"><a href="/Home/Events">Events</a></li>
                         <li><a href="/Home/About">About</a></li>
                         <li><a href="/Home/Contact">Contact</a></li>
                     </ul>
@@ -138,13 +138,16 @@
 
                 if (href.toLowerCase() == baseUrl + "/donors" || href.toLowerCase() == baseUrl + "/Donors/index")
                     $('#donor').addClass('active');
+                
+                if (href.toLocaleLowerCase().startsWith(baseUrl + '/home/event'))
+                    $('#event').addClass('active');
 
                 if (this.href == href)
                     $(this).closest('li').addClass("active");
             });
 
             $(function () {
-                $(".datepicker").datepicker({dateFormat: 'M dd, yy'});
+                $(".datepicker").datepicker({ dateFormat: 'M dd, yy' });
             });
     </script>
     @RenderSection("scripts", required: false)

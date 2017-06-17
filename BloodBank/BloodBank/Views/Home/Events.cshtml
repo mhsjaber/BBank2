@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BloodBank.Models.EntityDiagram.Event>
+@{
+    int i = 0;
+    ViewBag.Title = "Events";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .donor-list {
+        padding: 15px;
+        border: 1px solid #eee;
+        margin-top: 5px;
+    }
+
+    b {
+        font-weight: bold;
+    }
+    .in {
+        margin-top: 5px;
+        border-top: 1px solid #ddd;
+        padding-top: 5px;
+    }
+</style>
+
+<div class="content">
+    <div class="container">
+        <div class="contact">
+            <div class="contact-header">
+                <h3>Donors</h3>
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Donors</li>
+                </ol>
+            </div>
+            <div class="contact_head">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-12 donor-list">
+                        <h4 style="font-weight: bold">@item.Title 
+                            <small class="pull-right btn" data-toggle="collapse" data-target="#demo_@i">View Details</small>
+                        </h4>
+                        <p style="margin-bottom:0; line-height: 1.8; margin-top: 5px;">
+                            <span class="glyphicon glyphicon-map-marker"></span> @item.Location; 
+                            <span class="glyphicon glyphicon-time"></span> @item.EventDate.ToString("MMM dd, yyyy")
+                        </p>
+                        <div id="demo_@(i++)" class="collapse">
+                            <p><b>Objective:</b> @item.Objective</p>
+                            <p><b>Description:</b> @item.Description</p>
+                        </div>
+                    </div>
+                }
+                <br />
+                <a href="/Home/Events?type=archived" class="btn">Archived Events</a>
+            </div>
+        </div>
+    </div>
+</div>
+

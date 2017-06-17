@@ -41,7 +41,7 @@ namespace BloodBank.Controllers
         {
             if (model.FullName != null && model.Mobile != null && model.Address != null && model.Area != null &&
                 model.District != null && model.Email != null && model.Password != null && model.Username != null && 
-                model.DateOfBirth != null && model.BloodGroup != null && model.DontationStatus != 0)
+                model.DateOfBirth != null && model.BloodGroup != null && model.DontationStatus != null)
             {
                 model.Status = AccountStatus.Pending;
                 model.CreatedOn = DateTime.Now;
@@ -97,7 +97,7 @@ namespace BloodBank.Controllers
         {
             if (model.FullName != null && model.Mobile != null && model.Address != null && model.Area != null &&
                 model.District != null && model.Email != null &&  model.DateOfBirth != null && 
-                model.BloodGroup != null && model.DontationStatus != 0)
+                model.BloodGroup != null && model.DontationStatus != null)
             {
                 var user = context.Donor.ToList().Where(x=> x.ID == Guid.Parse(HttpContext.Session["UserID"].ToString())).FirstOrDefault();
                 user.Address = model.Address;

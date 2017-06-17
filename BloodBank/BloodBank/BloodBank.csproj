@@ -169,6 +169,7 @@
     <Compile Include="Models\EntityDiagram\ContactMessage.cs" />
     <Compile Include="Models\EntityDiagram\DonorDBContext.cs" />
     <Compile Include="Models\EntityDiagram\Donors.cs" />
+    <Compile Include="Models\EntityDiagram\Event.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -265,6 +266,7 @@
     <Content Include="Views\Donors\Login.cshtml" />
     <Content Include="Views\Donors\ProfileView.cshtml" />
     <Content Include="Views\Donors\Register.cshtml" />
+    <Content Include="Views\Home\Events.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

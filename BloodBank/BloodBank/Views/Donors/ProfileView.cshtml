@@ -36,10 +36,11 @@
                             </select>
                             <select class="text" name="DontationStatus" required>
                                 <option value="">Select Blood Donation Status</option>
-                                <option value="1" @(Model.DontationStatus ==1 ?"selected" : "")>Can Donate Anytime</option>
-                                <option value="2" @(Model.DontationStatus ==2 ?"selected" : "")>Can Donate if Emergency</option>
-                                <option value="3" @(Model.DontationStatus ==3 ?"selected" : "")>Recently Donated</option>
-                                <option value="4" @(Model.DontationStatus ==4 ?"selected" : "")>Can Manage a Donor</option>
+                                <option>@Model.DontationStatus</option>
+                                <option>Can Donate Anytime</option>
+                                <option>Can Donate if Emergency</option>
+                                <option>Recently Donated</option>
+                                <option>Can Manage a Donor</option>
                             </select>
                             <input type="text" class="text" value="@Model.Address" name="Address" placeholder="Enter Address" required>
                             <input type="text" class="text" value="@Model.Area" name="Area" placeholder="Enter Area" required>

@@ -28,6 +28,20 @@ namespace BloodBank.Controllers
             return View(model);
         }
 
+        public ActionResult Events(string type)
+        {
+            if (type == null || type.ToLower() != "archived")
+            {
+                var model = context.Event.ToList().Where(x => x.EventDate >= DateTime.Now).OrderBy(x => x.EventDate).ToList();
+                return View(model);
+            }
+            else
+            {
+                var model = context.Event.ToList().Where(x => x.EventDate < DateTime.Now).OrderByDescending(x => x.EventDate).ToList();
+                return View(model);
+            }
+        }
+
         [HttpPost]
         public ActionResult Contact(ContactMessage model)
         {

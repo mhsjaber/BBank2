@@ -24,6 +24,6 @@ namespace BloodBank.Models.EntityDiagram
         public AccountStatus Status { get; set; }
         [NotMapped]
         public string RePassword { get; set; }
-        public int DontationStatus { get; set; }
+        public string DontationStatus { get; set; }
     }
 }
