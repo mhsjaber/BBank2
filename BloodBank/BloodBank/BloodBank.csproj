@@ -274,9 +274,15 @@
     <Content Include="Views\Donors\ProfileView.cshtml" />
     <Content Include="Views\Donors\Register.cshtml" />
     <Content Include="Views\Home\Events.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\ManageDonor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Admin\build\" />
+    <Folder Include="Content\Admin\documentation\" />
+    <Folder Include="Content\Admin\src\" />
+    <Folder Include="Content\Admin\vendors\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
