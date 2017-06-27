@@ -19,7 +19,7 @@ namespace BloodBank.Models.EntityDiagram
         public string Password { get; set; }
         public string Username { get; set; }
         public DateTime CreatedOn { get; set; }
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public string BloodGroup { get; set; }
         public AccountStatus Status { get; set; }
         [NotMapped]
