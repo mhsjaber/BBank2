@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gentelella Alela! | </title>
+    <title>Admin Panel</title>
     <!-- Bootstrap -->
     <link href="/Content/Admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <style>
         .form-control {
-            max-width: 450px;
+            max-width: 550px;
         }
     </style>
 </head>
@@ -50,7 +50,7 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a href="index.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
+                                <li><a href="#"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
                                 <li>
                                     <a><i class="fa fa-edit"></i> Manage Donors <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
@@ -59,6 +59,15 @@
                                         <li><a href="/ManageDonors/Blocked">Blocked Donors</a></li>
                                     </ul>
                                 </li>
+                                <li>
+                                    <a><i class="fa fa-edit"></i> Manage Events <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/ManageEvents">All Events</a></li>
+                                        <li><a href="/ManageEvents/Create">Create Event</a></li>
+                                        <li><a href="/ManageEvents/Archived">Old Events</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/ManageAbouts/Index"><i class="fa fa-cogs"></i> About </a></li>
                             </ul>
                         </div>
                     </div>
@@ -104,6 +113,54 @@
         </div>
     </div>
 
+    <div id="donorDeleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete Donor</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure want to delete this donor?</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="/ManageDonors/Delete" method="post">
+                        <div class="form-actions no-color">
+                            @Html.AntiForgeryToken()
+                            <input name="id" id="donor_id" type="hidden" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="eventDeleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete Event</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure want to delete this event?</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="/ManageEvents/Delete" method="post">
+                        <div class="form-actions no-color">
+                            @Html.AntiForgeryToken()
+                            <input name="id" id="event_id" type="hidden" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="/Content/Admin/vendors/jquery/dist/jquery.min.js"></script>
     <script src="/Content/Admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/Content/Admin/vendors/fastclick/lib/fastclick.js"></script>
@@ -132,6 +189,16 @@
             $('.datatable').DataTable();
             $(".datepicker").datepicker({ dateFormat: 'M dd, yy' });
         });
+
+        function show_modal(id) {
+            $('#donor_id').val(id);
+            $('#donorDeleteModal').modal('show');
+        }
+
+        function show_event_modal(id) {
+            $('#event_id').val(id);
+            $('#eventDeleteModal').modal('show');
+        }
     </script>
 </body>
 </html>

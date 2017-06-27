@@ -43,7 +43,7 @@ namespace BloodBank.Controllers
         {
             if (model.FullName != null && model.Mobile != null && model.Address != null && model.Area != null &&
                 model.District != null && model.Email != null && model.Password != null && model.Username != null && 
-                model.DateOfBirth != null && model.BloodGroup != null && model.DontationStatus != null)
+                model.DateOfBirth != null && model.BloodGroup != null && model.DonationStatus != null)
             {
                 model.Status = AccountStatus.Pending;
                 model.CreatedOn = DateTime.Now;
@@ -99,7 +99,7 @@ namespace BloodBank.Controllers
         {
             if (model.FullName != null && model.Mobile != null && model.Address != null && model.Area != null &&
                 model.District != null && model.Email != null &&  model.DateOfBirth != null && 
-                model.BloodGroup != null && model.DontationStatus != null)
+                model.BloodGroup != null && model.DonationStatus != null)
             {
                 var user = context.Donor.ToList().Where(x=> x.ID == Guid.Parse(HttpContext.Session["UserID"].ToString())).FirstOrDefault();
                 user.Address = model.Address;
@@ -110,7 +110,7 @@ namespace BloodBank.Controllers
                 user.Email = model.Email;
                 user.FullName = model.FullName;
                 user.Mobile = model.Mobile;
-                user.DontationStatus = model.DontationStatus;
+                user.DonationStatus = model.DonationStatus;
 
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();

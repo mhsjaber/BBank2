@@ -20,7 +20,7 @@
                             <input type="text" class="text" value="@Model.FullName" name="FullName" placeholder="Enter Full Name" required>
                             <input type="text" class="text" value="@Model.Username" name="Username" placeholder="Enter Username" required>
                             <input type="text" class="text" value="@Model.Mobile" name="Mobile" placeholder="Enter Mobile Number">
-                            <input type="text" class="text datepicker" value="@(Model.DateOfBirth != null? Model.DateOfBirth.Value.ToString("MMM dd, yyyy"): "")" name="DateOfBirth" placeholder="Enter Date of Birth">
+                            <input type="text" class="text datepicker" name="DateOfBirth" placeholder="Enter Date of Birth">
                             <input type="text" class="text" value="@Model.Email" name="Email" placeholder="Enter Email Address">
                             <input type="password" class="text" value="@Model.Password" name="Password" placeholder="Type Password" required>
                             <input type="password" class="text" value="@Model.RePassword" name="RePassword" placeholder="Retype Password" required>
@@ -35,7 +35,7 @@
                                 <option>AB-</option>
                                 <option>O-</option>
                             </select>
-                            <select class="text" name="DontationStatus" required>
+                            <select class="text" name="DonationStatus" required>
                                 <option value="">Select Blood Donation Status</option>
                                 <option>Can Donate Anytime</option>
                                 <option>Can Donate if Emergency</option>

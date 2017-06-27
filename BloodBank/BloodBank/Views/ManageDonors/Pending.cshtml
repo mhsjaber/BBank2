@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<BloodBank.Models.EntityDiagram.Donor>
 
 @{
+    int i = 0;
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -22,6 +23,7 @@
                     <table class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.FullName)
                                 </th>
@@ -32,16 +34,13 @@
                                     @Html.DisplayNameFor(model => model.Username)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.DateOfBirth)
-                                </th>
-                                <th>
                                     @Html.DisplayNameFor(model => model.BloodGroup)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Status)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.DontationStatus)
+                                    @Html.DisplayNameFor(model => model.CreatedOn)
                                 </th>
                                 <th>Action</th>
                             </tr>
@@ -50,6 +49,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
+                                    <td>@(i++.ToString("00"))</td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.FullName)
                                     </td>
@@ -60,21 +60,18 @@
                                         @Html.DisplayFor(modelItem => item.Username)
                                     </td>
                                     <td>
-                                        @item.DateOfBirth.ToString("MMM dd, yyyy")
-                                    </td>
-                                    <td>
                                         @Html.DisplayFor(modelItem => item.BloodGroup)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Status)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.DontationStatus)
+                                        @item.CreatedOn.ToString("dd/MM/yyyy hh:mm tt")
                                     </td>
                                     <td>
                                         @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                                         @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                        <a onclick="show_modal('@item.ID')" style="cursor:pointer">Delete</a>
                                     </td>
                                 </tr>
                             }

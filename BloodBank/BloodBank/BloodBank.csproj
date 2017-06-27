@@ -163,7 +163,9 @@
     <Compile Include="Authorization\CustomAuthorizeUser.cs" />
     <Compile Include="Controllers\DonorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageAboutsController.cs" />
     <Compile Include="Controllers\ManageDonorsController.cs" />
+    <Compile Include="Controllers\ManageEventsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -276,13 +278,19 @@
     <Content Include="Views\Donors\Register.cshtml" />
     <Content Include="Views\Home\Events.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\ManageDonors\Create.cshtml" />
-    <Content Include="Views\ManageDonors\Delete.cshtml" />
     <Content Include="Views\ManageDonors\Details.cshtml" />
     <Content Include="Views\ManageDonors\Edit.cshtml" />
     <Content Include="Views\ManageDonors\Index.cshtml" />
     <Content Include="Views\ManageDonors\Pending.cshtml" />
     <Content Include="Views\ManageDonors\Blocked.cshtml" />
+    <Content Include="Views\ManageAbouts\Edit.cshtml" />
+    <Content Include="Views\ManageAbouts\Index.cshtml" />
+    <Content Include="Views\ManageEvents\Create.cshtml" />
+    <Content Include="Views\ManageEvents\Delete.cshtml" />
+    <Content Include="Views\ManageEvents\Details.cshtml" />
+    <Content Include="Views\ManageEvents\Edit.cshtml" />
+    <Content Include="Views\ManageEvents\Index.cshtml" />
+    <Content Include="Views\ManageEvents\Archived.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

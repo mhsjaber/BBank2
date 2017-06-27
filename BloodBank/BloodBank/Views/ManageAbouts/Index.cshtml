@@ -1,0 +1,64 @@
+﻿@model BloodBank.Models.EntityDiagram.About
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>About Details <small>Some examples to get you started</small></h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>About</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="x_content">
+                        <br />
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Mission)
+                                </th>
+                                <td>
+                                    @Model.Mission
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Vision)
+                                </th>
+                                <td>
+                                    @Model.Vision
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Charitable Works
+                                </th>
+                                <td>
+                                    @Model.CharitableWorks
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                                <td>
+                                    <a href="/ManageAbouts/Edit/@Model.ID" class="btn btn-primary">Edit</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

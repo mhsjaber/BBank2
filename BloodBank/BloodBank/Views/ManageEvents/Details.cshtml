@@ -1,0 +1,79 @@
+﻿@model BloodBank.Models.EntityDiagram.Event
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Events <small>Some examples to get you started</small></h3>
+        </div>
+        <div class="title_right">
+            <a class="pull-right btn btn-primary" href="/ManageEvents/Index">Back</a>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Event Details</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Title)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.Title)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.Description)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Location)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.Location)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Objective)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.Objective)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EventDate)
+                            </th>
+                            <td>
+                                @Model.EventDate.ToString("MMM dd, yyyy hh:mm tt")
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Action</th>
+                            <td>
+                                <a href="/ManageEvents/Edit/@Model.ID" class="btn btn-primary">Edit</a>
+                                <a class="btn btn-danger" onclick="show_event_modal('@Model.ID')">Delete</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

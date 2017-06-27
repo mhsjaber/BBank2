@@ -10,23 +10,18 @@ using BloodBank.Models.EntityDiagram;
 
 namespace BloodBank.Controllers
 {
-    public class ManageDonorsController : Controller
+    public class ManageEventsController : Controller
     {
         private DonorDBContext db = new DonorDBContext();
 
         public ActionResult Index()
         {
-            return View(db.Donor.ToList().OrderByDescending(x => x.CreatedOn).ToList());
+            return View(db.Event.ToList());
         }
 
-        public ActionResult Pending()
+        public ActionResult Archived()
         {
-            return View(db.Donor.ToList().Where(x => x.Status == AccountStatus.Pending).ToList().OrderByDescending(x => x.CreatedOn).ToList());
-        }
-
-        public ActionResult Blocked()
-        {
-            return View(db.Donor.ToList().Where(x => x.Status == AccountStatus.Blocked).ToList().OrderByDescending(x => x.CreatedOn).ToList());
+            return View(db.Event.ToList().Where(x => x.EventDate <= DateTime.Now).ToList());
         }
 
         public ActionResult Details(Guid? id)
@@ -35,12 +30,31 @@ namespace BloodBank.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donor donor = db.Donor.Find(id);
-            if (donor == null)
+            Event @event = db.Event.Find(id);
+            if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(donor);
+            return View(@event);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,Title,Description,Location,Objective,EventDate")] Event @event)
+        {
+            if (ModelState.IsValid)
+            {
+                @event.ID = Guid.NewGuid();
+                db.Event.Add(@event);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(@event);
         }
 
         public ActionResult Edit(Guid? id)
@@ -49,31 +63,31 @@ namespace BloodBank.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donor donor = db.Donor.Find(id);
-            if (donor == null)
+            Event @event = db.Event.Find(id);
+            if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(donor);
+            return View(@event);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FullName,Mobile,Address,Area,District,Email,Password,Username,CreatedOn,DateOfBirth,BloodGroup,Status,DonationStatus")] Donor donor)
+        public ActionResult Edit([Bind(Include = "ID,Title,Description,Location,Objective,EventDate")] Event @event)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(donor).State = EntityState.Modified;
+                db.Entry(@event).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(donor);
+            return View(@event);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Delete(Guid id)
         {
-            Donor donor = db.Donor.Find(id);
-            db.Donor.Remove(donor);
+            Event @event = db.Event.Find(id);
+            db.Event.Remove(@event);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

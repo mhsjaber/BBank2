@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<BloodBank.Models.EntityDiagram.Donor>
 
 @{
+    int i = 1;
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -22,6 +23,7 @@
                     <table class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.FullName)
                                 </th>
@@ -47,6 +49,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
+                                    <td>@(i++.ToString("00"))</td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.FullName)
                                     </td>
@@ -63,12 +66,12 @@
                                         @Html.DisplayFor(modelItem => item.Status)
                                     </td>
                                     <td>
-                                        @item.CreatedOn.ToString("MMM dd, yyyy")
+                                        @item.CreatedOn.ToString("dd/MM/yyyy hh:mm tt")
                                     </td>
                                     <td>
                                         @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                                         @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                        <a onclick="show_modal('@item.ID')" style="cursor:pointer">Delete</a>
                                     </td>
                                 </tr>
                             }
