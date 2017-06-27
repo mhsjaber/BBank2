@@ -25,7 +25,7 @@ namespace BloodBank.Authorization
             if (typeString != null)
             {
                 UserType type = (UserType)Enum.Parse(typeof(UserType), typeString.ToString(), true);
-                if (type == UserType.Donor)
+                if (type == UserType)
                     return true;
             }
             return false;

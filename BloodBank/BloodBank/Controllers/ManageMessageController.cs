@@ -12,39 +12,37 @@ using BloodBank.Authorization;
 namespace BloodBank.Controllers
 {
     [CustomAuthorizeUser(UserType = UserType.Admin)]
-    public class ManageAboutsController : Controller
+    public class ManageMessageController : Controller
     {
         private DonorDBContext db = new DonorDBContext();
 
         public ActionResult Index()
         {
-            return View(db.About.ToList().FirstOrDefault());
+            return View(db.ContactMessage.ToList().OrderByDescending(x=> x.CreatedOn).ToList());
         }
 
-        public ActionResult Edit(Guid? id)
+        public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            About about = db.About.Find(id);
-            if (about == null)
+            ContactMessage contactMessage = db.ContactMessage.Find(id);
+            if (contactMessage == null)
             {
                 return HttpNotFound();
             }
-            return View(about);
+            return View(contactMessage);
         }
-
-        [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Mission,Vision,CharitableWorks")] About about)
+        
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(Guid id)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(about).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(about);
+            ContactMessage contactMessage = db.ContactMessage.Find(id);
+            db.ContactMessage.Remove(contactMessage);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

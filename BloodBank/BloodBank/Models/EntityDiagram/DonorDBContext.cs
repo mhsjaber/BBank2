@@ -13,6 +13,7 @@ namespace BloodBank.Models.EntityDiagram
         public DbSet<ContactMessage> ContactMessage { get; set; }
         public DbSet<About> About { get; set; }
         public DbSet<Event> Event { get; set; }
+        public DbSet<Admin> Admin { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

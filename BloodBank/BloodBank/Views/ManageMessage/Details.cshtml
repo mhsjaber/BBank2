@@ -1,0 +1,70 @@
+﻿@model BloodBank.Models.EntityDiagram.ContactMessage
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Contact Message <small>Some examples to get you started</small></h3>
+        </div>
+        <div class="title_right">
+            <a class="pull-right btn btn-primary" href="/ManageDonors/Index">Back</a>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Contact Message Details</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FullName)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.FullName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.Email)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Subject)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.Subject)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Date
+                            </th>
+                            <td>
+                                @Model.CreatedOn.ToString("MMM dd, yyyy")
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Action</th>
+                            <td>
+                                <a class="btn btn-danger" onclick="show_message_modal('@Model.ID')">Delete</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

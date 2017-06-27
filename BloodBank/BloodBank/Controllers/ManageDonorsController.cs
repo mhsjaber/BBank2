@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BloodBank.Models.EntityDiagram;
+using BloodBank.Authorization;
 
 namespace BloodBank.Controllers
 {
+    [CustomAuthorizeUser(UserType = UserType.Admin)]
     public class ManageDonorsController : Controller
     {
         private DonorDBContext db = new DonorDBContext();
