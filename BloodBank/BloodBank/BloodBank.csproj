@@ -160,7 +160,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Authorization\CustomAuthorizeUser.cs" />
     <Compile Include="Controllers\DonorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -3753,7 +3752,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\site\images\Thumbs.db" />
-    <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Content\admin\documentation\fonts\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\admin\documentation\fonts\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\admin\documentation\fonts\fonts\fontawesome-webfont.woff" />
@@ -4649,9 +4647,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
