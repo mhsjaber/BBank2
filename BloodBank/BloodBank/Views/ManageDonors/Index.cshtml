@@ -32,16 +32,13 @@
                                     @Html.DisplayNameFor(model => model.Username)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.DateOfBirth)
-                                </th>
-                                <th>
                                     @Html.DisplayNameFor(model => model.BloodGroup)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Status)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.DontationStatus)
+                                    @Html.DisplayNameFor(model => model.CreatedOn)
                                 </th>
                                 <th>Action</th>
                             </tr>
@@ -60,16 +57,13 @@
                                         @Html.DisplayFor(modelItem => item.Username)
                                     </td>
                                     <td>
-                                        @item.DateOfBirth.ToShortDateString()
-                                    </td>
-                                    <td>
                                         @Html.DisplayFor(modelItem => item.BloodGroup)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Status)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.DontationStatus)
+                                        @item.CreatedOn.ToString("MMM dd, yyyy")
                                     </td>
                                     <td>
                                         @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |

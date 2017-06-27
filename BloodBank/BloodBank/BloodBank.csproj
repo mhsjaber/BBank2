@@ -276,7 +276,6 @@
     <Content Include="Views\Donors\Register.cshtml" />
     <Content Include="Views\Home\Events.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\ManageDonor\Index.cshtml" />
     <Content Include="Views\ManageDonors\Create.cshtml" />
     <Content Include="Views\ManageDonors\Delete.cshtml" />
     <Content Include="Views\ManageDonors\Details.cshtml" />

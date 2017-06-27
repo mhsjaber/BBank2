@@ -17,6 +17,12 @@
     <link href="/Content/Admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="/Content/Admin/build/css/custom.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        .form-control {
+            max-width: 450px;
+        }
+    </style>
 </head>
 <body class="nav-md">
     <div class="container body">
@@ -119,10 +125,12 @@
     <script src="/Content/Admin/vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="/Content/Admin/vendors/pdfmake/build/vfs_fonts.js"></script>
     <script src="/Content/Admin/build/js/custom.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
         $(document).ready(function () {
             $('.datatable').DataTable();
+            $(".datepicker").datepicker({ dateFormat: 'M dd, yy' });
         });
     </script>
 </body>

@@ -16,17 +16,17 @@ namespace BloodBank.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Donor.ToList());
+            return View(db.Donor.ToList().OrderByDescending(x => x.CreatedOn).ToList());
         }
 
         public ActionResult Pending()
         {
-            return View(db.Donor.ToList().Where(x => x.Status == AccountStatus.Pending).ToList());
+            return View(db.Donor.ToList().Where(x => x.Status == AccountStatus.Pending).ToList().OrderByDescending(x => x.CreatedOn).ToList());
         }
 
         public ActionResult Blocked()
         {
-            return View(db.Donor.ToList().Where(x => x.Status == AccountStatus.Blocked).ToList());
+            return View(db.Donor.ToList().Where(x => x.Status == AccountStatus.Blocked).ToList().OrderByDescending(x => x.CreatedOn).ToList());
         }
 
         public ActionResult Details(Guid? id)
