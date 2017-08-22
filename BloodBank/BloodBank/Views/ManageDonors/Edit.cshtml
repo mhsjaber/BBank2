@@ -94,16 +94,6 @@
                                     @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
-                            <div class="form-group hide">
-                                @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "control-label col-md-3" })
-                                <div class="col-md-9">
-                                    @Html.EditorFor(model => model.CreatedOn, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.CreatedOn, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-
                             <div class="form-group">
                                 @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-3" })
                                 <div class="col-md-9">
@@ -111,7 +101,6 @@
                                     @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 @Html.LabelFor(model => model.BloodGroup, htmlAttributes: new { @class = "control-label col-md-3" })
                                 <div class="col-md-9">
@@ -130,7 +119,20 @@
                                     @Html.ValidationMessageFor(model => model.BloodGroup, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.LastDonate, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-9">
+                                    @if (Model.LastDonate != null)
+                                    {
+                                        <input type="text" name="LastDonate" value="@Model.LastDonate.Value.ToString("MMM dd, yyyy")" class="form-control datepicker" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="LastDonate" class="form-control datepicker" />
+                                    }
+                                    @Html.ValidationMessageFor(model => model.LastDonate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-3" })
                                 <div class="col-md-9">

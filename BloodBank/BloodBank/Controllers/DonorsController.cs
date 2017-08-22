@@ -7,6 +7,7 @@ using BloodBank.Models.EntityDiagram;
 using BloodBank.Models;
 using BloodBank.Authorization;
 using System.Data.Entity.Validation;
+using System.Collections.Generic;
 
 namespace BloodBank.Controllers
 {
@@ -21,7 +22,8 @@ namespace BloodBank.Controllers
                 .ToList()
                 .Where(x => x.Area.ToLower().Contains(area.ToLower()) &&
                     x.District.ToLower().Contains(district.ToLower()) &&
-                    x.Status == AccountStatus.Active)
+                    x.Status == AccountStatus.Active &&
+                    (x.LastDonate == null || x.LastDonate <= DateTime.Now.AddDays(-90)))
                 .ToList()
                 .OrderBy(x => x.BloodGroup)
                 .ThenBy(x => x.Area)
@@ -36,6 +38,31 @@ namespace BloodBank.Controllers
         public ActionResult Register()
         {
             return View(new Donor());
+        }
+
+        [HttpPost]
+        public ActionResult RequestDonate(Guid DonorID)
+        {
+            Guid myId = Guid.Parse(Session["UserID"].ToString());
+            var req = context.DonateRequest.ToList()
+                .Where(x => x.RequestedTo == DonorID && 
+                x.RequestedBy == myId && 
+                x.Status == RequestStatus.Requested)
+                .FirstOrDefault();
+            if (req == null)
+            {
+                var rneq = new DonateRequest()
+                {
+                    CreatedOn = DateTime.Now,
+                    ID = Guid.NewGuid(),
+                    RequestedBy = myId,
+                    RequestedTo = DonorID,
+                    Status = RequestStatus.Requested
+                };
+                context.DonateRequest.Add(rneq);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
 
         [AllowAnonymous, HttpPost]
@@ -94,6 +121,48 @@ namespace BloodBank.Controllers
             return View(user);
         }
 
+        public ActionResult MyRequests()
+        {
+            var myID = Guid.Parse(HttpContext.Session["UserID"].ToString());
+            var reqs = context.DonateRequest.ToList()
+                .Where(x => (x.RequestedTo == myID && 
+                x.Status == RequestStatus.Requested) || x.RequestedBy == myID)
+                .ToList();
+            var list = new List<RequestModel>();
+            foreach (var item in reqs)
+            {
+                list.Add(new RequestModel()
+                {
+                    By = GetName(item.RequestedBy),
+                    Date = item.CreatedOn,
+                    ID = item.ID,
+                    ById = item.RequestedBy,
+                    ToId = item.RequestedTo,
+                    Status = item.Status,
+                    ToNum = GetNumber(item.RequestedTo),
+                    FromNum = GetNumber(item.RequestedBy)
+                });
+            }
+            return View(list);
+        }
+
+        private string GetNumber(Guid id)
+        {
+            var c = new DonorDBContext();
+            var name = c.Donor.Find(id).Mobile;
+            return name;
+        }
+
+        [HttpPost]
+        public ActionResult MyRequests(Guid ID, RequestStatus status)
+        {
+            var rr = context.DonateRequest.Find(ID);
+            rr.Status = status;
+            context.Entry(rr).State = EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("MyRequests");
+        }
+
         [HttpPost]
         public ActionResult ProfileView(Donor model)
         {
@@ -111,6 +180,7 @@ namespace BloodBank.Controllers
                 user.FullName = model.FullName;
                 user.Mobile = model.Mobile;
                 user.DonationStatus = model.DonationStatus;
+                user.LastDonate = model.LastDonate;
 
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
@@ -125,6 +195,13 @@ namespace BloodBank.Controllers
             Session.Abandon();
             Session.RemoveAll();
             return RedirectToAction("Index", "Home");
+        }
+
+        public string GetName(Guid id)
+        {
+            var c = new DonorDBContext();
+            var name = c.Donor.Find(id).FullName;
+            return name;
         }
 
         protected override void Dispose(bool disposing)

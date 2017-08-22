@@ -14,6 +14,7 @@ namespace BloodBank.Models.EntityDiagram
         public DbSet<About> About { get; set; }
         public DbSet<Event> Event { get; set; }
         public DbSet<Admin> Admin { get; set; }
+        public DbSet<DonateRequest> DonateRequest { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -7,7 +7,7 @@
     <div class="container">
         <div class="contact">
             <div class="contact-header">
-                <h3>My Information</h3>
+                <h3>My Information<span class="pull-right" style="font-weight: bold"><small><a href="/Donors/MyRequests" style="font-weight: bold; padding: 10px; border: 2px solid #eee">Donate Requests</a></small></span></h3>
                 <ol class="breadcrumb">
                     <li><a href="/Donors">Donor</a></li>
                     <li class="active">Profile</li>
@@ -20,7 +20,7 @@
                         <div class="form_details">
                             <input type="text" class="text" value="@Model.FullName" name="FullName" placeholder="Enter Full Name" required>
                             <input type="text" class="text" value="@Model.Mobile" name="Mobile" placeholder="Enter Mobile Number">
-                            <input type="text" class="text datepicker" value="@(Model.DateOfBirth != null? Model.DateOfBirth.Value.ToString("MMM dd, yyyy"): "")" name="DateOfBirth" placeholder="Enter Date of Birth">
+                            <input type="text" class="text datepicker" value="@Model.DateOfBirth.ToString("MMM dd, yyyy")" name="DateOfBirth" placeholder="Enter Date of Birth">
                             <input type="text" class="text" value="@Model.Email" name="Email" placeholder="Enter Email Address">
                             <select class="text" name="BloodGroup" required>
                                 <option value="">Select Blood Group</option>
@@ -45,6 +45,14 @@
                             <input type="text" class="text" value="@Model.Address" name="Address" placeholder="Enter Address" required>
                             <input type="text" class="text" value="@Model.Area" name="Area" placeholder="Enter Area" required>
                             <input type="text" class="text" value="@Model.District" name="District" placeholder="Enter District" required>
+                            @if (Model.LastDonate == null)
+                            {
+                                <input type="text" class="text datepicker" value="" name="LastDonate" placeholder="Enter Last Blood Donate Date">
+                            }
+                            else
+                            {    
+                                <input type="text" class="text datepicker" value="@Model.LastDonate.Value.ToString("MMM dd, yyyy")" name="LastDonate" placeholder="Enter Last Blood Donate Date">
+                            }
                             <div class="clearfix"> </div>
                             <input name="submit" type="submit" value="Update">
                         </div>

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<BloodBank.Models.RequestModel>
+@{
+    ViewBag.Title = "Requests";
+}
+
+<style>
+    th {
+    font-weight: bold !important;
+    }
+</style>
+
+<div class="content">
+    <div class="container">
+        <div class="contact">
+            <div class="contact-header">
+                <h3>Donate Requests <span class="pull-right" style="font-weight: bold"><small><a href="/Donors/ProfileView" style="font-weight: bold; padding: 10px; border: 2px solid #eee">My Information</a></small></span></h3>
+                <ol class="breadcrumb">
+                    <li><a href="/Donors">Donor</a></li>
+                    <li class="active">Requests</li>
+                </ol>
+            </div>
+            <div class="contact-grids">
+                <div class="col-sm-12 contact_left">
+                    <h3>Requested To Me</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Where(x => x.ToId == Guid.Parse(HttpContext.Current.Session["UserID"].ToString()) && x.Status == BloodBank.Models.EntityDiagram.RequestStatus.Requested))
+                            {
+                                <form  method="post" action="/Donors/MyRequests">
+                                    <tr>
+                                        <td>@item.By</td>
+                                        <td>@item.FromNum</td>
+                                        <td>@item.Date.ToString("MMM dd, yyyy hh:mm tt")</td>
+                                        <td>
+                                            <input type="hidden" name="ID" value="@item.ID"/>
+                                            <select style="width: 120px; padding: 5px" name="Status">
+                                                @if (((int)item.Status) == 0)
+                                                {
+                                                    <option value="0" selected>Requested</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">Requested</option>
+                                                }
+                                                @if (((int)item.Status) == 1)
+                                                {
+                                                    <option value="1" selected>Accepted</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="1">Accepted</option>
+                                                }
+                                                 
+                                                @if (((int)item.Status) == 2)
+                                                {
+                                                    <option value="2" selected>Rejected</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="2">Rejected</option>
+                                                }
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="submit" class="btn" value="Change"/>
+                                        </td>
+                                    </tr>
+                                </form>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                    <br />
+                    <h3>Requested By Me</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Where(x => x.ById == Guid.Parse(HttpContext.Current.Session["UserID"].ToString())))
+                            {
+                                <tr>
+                                    <td>@item.By</td>
+                                    <td>@item.ToNum</td>
+                                    <td>@item.Date.ToString("MMM dd, yyyy hh:mm tt")</td>
+                                    <td>@item.Status.ToString()</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>

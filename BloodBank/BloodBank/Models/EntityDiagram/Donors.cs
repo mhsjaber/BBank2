@@ -30,5 +30,6 @@ namespace BloodBank.Models.EntityDiagram
         public string RePassword { get; set; }
         [Display(Name = "Donation Status")]
         public string DonationStatus { get; set; }
+        public DateTime? LastDonate { get; set; }
     }
 }

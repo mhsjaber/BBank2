@@ -175,11 +175,13 @@
     <Compile Include="Models\EntityDiagram\AccountStatus.cs" />
     <Compile Include="Models\EntityDiagram\Admin.cs" />
     <Compile Include="Models\EntityDiagram\ContactMessage.cs" />
+    <Compile Include="Models\EntityDiagram\DonateRequest.cs" />
     <Compile Include="Models\EntityDiagram\DonorDBContext.cs" />
     <Compile Include="Models\EntityDiagram\Donors.cs" />
     <Compile Include="Models\EntityDiagram\Event.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -626,6 +628,7 @@
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\ChangePassword.cshtml" />
+    <Content Include="Views\Donors\MyRequests.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
